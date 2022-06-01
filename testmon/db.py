@@ -106,7 +106,7 @@ class DB(object):
 
     def insert_node_fingerprints(self, nodeid: str, fingerprint_records, result={}):
         with self.con as con:
-            failed = any(r.get("outcome") == "failed" for r in result.values())
+            failed = 0
             durations = defaultdict(
                 float,
                 {key: value.get("duration", 0.0) for key, value in result.items()},
